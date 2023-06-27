@@ -1,0 +1,137 @@
+﻿<Application x:Class="FEiMusic.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:local="clr-namespace:FEiMusic"
+             StartupUri="View/MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:CustomColorTheme BaseTheme="Light" PrimaryColor="#004C8B" SecondaryColor="#F07D00"/>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Style x:Key="TextBox" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}" TargetType="{x:Type TextBox}">
+                <Setter Property="materialDesign:HintAssist.IsFloating" Value="True"/>
+                <Setter Property="materialDesign:HintAssist.Foreground" Value="#F07D00"/>
+                <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="#F07D00"/>
+                <Setter Property="FontFamily" Value="/FEiMusic;component/Utilities/Fonts/#Clear Sans"/>
+            </Style>
+
+            <Style x:Key="PasswordBox" BasedOn="{StaticResource MaterialDesignFloatingHintPasswordBox}" TargetType="{x:Type PasswordBox}">
+                <Setter Property="materialDesign:HintAssist.IsFloating" Value="True"/>
+                <Setter Property="materialDesign:HintAssist.Foreground" Value="#F07D00"/>
+                <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="#F07D00"/>
+                <Setter Property="FontFamily" Value="/FEiMusic;component/Utilities/Fonts/#Clear Sans"/>
+            </Style>
+
+            <Style x:Key="PrimaryButton" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}" TargetType="{x:Type Button}">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="FontFamily" Value="/FEiMusic;component/Utilities/Fonts/#Clear Sans"/>
+                <Setter Property="Foreground" Value="#FFFF"/>
+                <Setter Property="Background" Value="#004C8B"/>
+                <Setter Property="BorderBrush" Value="#004C8B"/>
+                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="10"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="SecundaryButton" BasedOn="{StaticResource MaterialDesignRaisedAccentButton}" TargetType="{x:Type Button}">
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="/FEiMusic;component/Utilities/Fonts/#Clear Sans"/>
+                <Setter Property="Foreground" Value="#FFFF"/>
+                <Setter Property="Background" Value="#F07D00"/>
+                <Setter Property="BorderBrush" Value="#F07D00"/>
+                <Setter Property="BorderThickness" Value="3"/>
+                <Setter Property="materialDesign:ButtonAssist.CornerRadius" Value="10"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="snackbarButton" BasedOn="{StaticResource MaterialDesignFlatButton}" TargetType="{x:Type Button}">
+                <Setter Property="VerticalAlignment" Value="Stretch" />
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontFamily" Value="/FEiMusic;component/Utilities/Fonts/#Clear Sans"/>
+                <Setter Property="Foreground" Value="#FFFF"/>
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Cursor" Value="Hand" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="Height" Value="36" />
+                <Setter Property="Margin" Value="8 -10 -8 -10" />
+                <Setter Property="Padding" Value="8" />
+                
+            </Style>
+
+            <ImageBrush x:Key="MenuToggleButton_MouseOver"
+                    ImageSource="/Utilities/Images/tgBtn_MouseOver.png"/>
+
+            <!--Text font style-->
+            <Style x:Key="FontStyle" TargetType="TextBlock">
+                <Setter Property="VerticalAlignment"
+                    Value="Center"/>
+                <Setter Property="HorizontalAlignment"
+                    Value="Left"/>
+                <Setter Property="Foreground"
+                    Value="White"/>
+                <Setter Property="FontSize"
+                    Value="20"/>
+            </Style>
+
+            <!--Tooltip Style Templete-->
+            <Style TargetType="ToolTip" x:Key="ToolTipeStyle">
+                <Setter Property="Placement" Value="Right"/>
+                <Setter Property="Height" Value="40"/>
+                <Setter Property="Width" Value="140"/>
+                <Setter Property="Margin" Value="20,0,0,0"/>
+                <Setter Property="Background" Value="Gray"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="PlacementRectangle" Value="55,0,0,0"/>
+                <Setter Property="HorizontalOffset" Value="15"/>
+                <Setter Property="VerticalOffset" Value="4"/>
+                <Setter Property="HasDropShadow" Value="True"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            </Style>
+
+            <Style x:Key="MenuToggleButton" TargetType="{x:Type ToggleButton}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Border x:Name="border"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                SnapsToDevicePixels="True">
+
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource MenuToggleButton_MouseOver}"/>
+
+                                    <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{StaticResource MenuToggleButton_MouseOver}"/>
+                                </Trigger>
+
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource MenuToggleButton_MouseOver}"/>
+                                    <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{StaticResource MenuToggleButton_MouseOver}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
